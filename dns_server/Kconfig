@@ -1,0 +1,5 @@
+menu "DNS server"
+    config DNS_SERVER_TASK_PRIO
+        int "DNS server task priority"
+        default 1
+endmenu

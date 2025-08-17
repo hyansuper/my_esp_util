@@ -1,0 +1,25 @@
+menu "Wifi manager"
+    config WMGR_HOSTNAME_CUSTOM
+        bool "custom name for ap mode ssid, default to project APP_NAME"
+        default n
+    config WMGR_HOSTNAME_CUSTOM_NAME
+        string "Set both server hostname and wifi ap mode ssid" if WMGR_HOSTNAME_CUSTOM
+        default LWIP_LOCAL_HOSTNAME
+        help
+            By default this option is same as LWIP_LOCAL_HOSTNAME
+    config WMGR_APPEND_DEVICE_ID_TO_HOSTNAME
+        bool "Append to hostname the last 4 hex digit of mac address as device id"
+        default y
+    config WMGR_CONN_MAX_RETRY
+        int "wifi sta mode connection max retries"
+        default 2
+    config WMGR_WAIT_CONN_TIMEOUT
+        int "wifi sta mode connect timeout(ms)"
+        default 10000
+    config WMGR_STA_RECONN_INTERVAL
+        int "wifi sta mode reconnect delay(ms)"
+        default 60000
+    config WMGR_PROV_MAX_CLIENT
+        int "provision http server max allowed client connections"
+        default 3
+endmenu

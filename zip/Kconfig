@@ -1,0 +1,10 @@
+menu "ZIP"
+	config ZIP_GUNZIP_CHECK_HEADER_CRC32
+		bool "Check header crc32 when doing gunzip"
+		default y
+	config ZIP_GUNZIP_CHECK_BODY_CRC32
+		bool "Check content body crc32 when doing gunzip"
+		default y
+		help
+			Turn it off to save time.
+endmenu

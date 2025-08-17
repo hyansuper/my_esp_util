@@ -1,0 +1,10 @@
+idf_component_register(SRCS "sntp_srv.c"
+                       INCLUDE_DIRS "."
+                       PRIV_REQUIRES esp_common esp_netif)
+
+
+if(APP_REGION STREQUAL "CN")
+    add_compile_definitions(SNTP_REGION_CN)
+else()
+    add_compile_definitions(SNTP_REGION_EN)
+endif()

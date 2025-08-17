@@ -1,0 +1,5 @@
+menu "HTTP server util"
+    config HTTP_SERVER_UTIL_ENABLE_PROXY
+        bool "compile server proxy handler"
+        default n
+endmenu

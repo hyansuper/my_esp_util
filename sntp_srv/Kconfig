@@ -1,0 +1,14 @@
+menu "SNTP Service"
+	config SNTP_SRV_SERVER_DEFAULT
+        string "Default SNTP server"
+        default "time.apple.com"
+    config SNTP_SRV_SERVER_FALLBACK
+        string "Fallback SNTP server"
+        default "time.windows.com"
+    config SNTP_SRV_SYNC_TIMEOUT
+    	int "SNTP sync timeout(ms)"
+    	default 5000
+    config SNTP_SRV_MAX_RETRY
+    	int "Max SNTP connect retries on timeout"
+    	default 6
+endmenu

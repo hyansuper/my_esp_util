@@ -1,0 +1,5 @@
+menu "HTTP client util"
+    config HTTP_CLIENT_UTIL_SKIP_COMMON_NAME_CHECK
+        bool "skip server common name check"
+        default n
+endmenu

@@ -1,0 +1,8 @@
+menu "KV"
+    config KV_PART_CUSTOM
+        bool "set custom name for nvs partition, default to project {APP_NAME}_nvs"
+        default n
+    config KV_PART_CUSTOM_NAME
+        string "Set custom nvs partition name" if KV_PART_CUSTOM
+        default "kv_nvs"
+endmenu
