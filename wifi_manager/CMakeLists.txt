@@ -10,3 +10,5 @@ idf_component_register(SRCS "wifi_manager.c"
                     PRIV_REQUIRES esp_common nvs_flash esp_http_server server_util mjson dns_server
                     EMBED_FILES ${embed_files})
 
+
+add_compile_definitions(APP_NAME="${CMAKE_PROJECT_NAME}")

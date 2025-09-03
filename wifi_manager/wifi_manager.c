@@ -69,7 +69,9 @@ void wifi_mgr_init(char* c) {
         sprintf(hostname+sizeof(hostname)-5, "%02X%02X", mac[4],mac[5]);
     #endif
 }
-
+static void v_wifi_connect() {
+    esp_wifi_connect();
+}
 static void wifi_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data)
 {
@@ -99,7 +101,7 @@ static void wifi_handler(void* arg, esp_event_base_t event_base,
                                                 pdMS_TO_TICKS(CONFIG_WMGR_STA_RECONN_INTERVAL), // interval
                                                 pdTRUE, // auto reload
                                                 NULL, // timer ID
-                                                esp_wifi_connect)),
+                                                v_wifi_connect)),
                                     pdMS_TO_TICKS(5000))) {
                         ESP_LOGE(TAG, "create timer");
                         esp_restart();

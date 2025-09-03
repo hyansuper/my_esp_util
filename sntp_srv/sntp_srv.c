@@ -72,7 +72,7 @@ esp_err_t sntp_srv_init(const char* tz, sntp_srv_minutely_update_cb_t cb) {
     }
 
 #if CONFIG_LWIP_SNTP_MAX_SERVERS == 1
-    esp_sntp_config_t sntp_conf = ESP_NETIF_SNTP_DEFAULT_CONFIG(CONFIG_SNTP_TIME_SERVER);
+    esp_sntp_config_t sntp_conf = ESP_NETIF_SNTP_DEFAULT_CONFIG(CONFIG_SNTP_SRV_SERVER_DEFAULT);
 #elif CONFIG_LWIP_SNTP_MAX_SERVERS >= 2
     esp_sntp_config_t sntp_conf = ESP_NETIF_SNTP_DEFAULT_CONFIG_MULTIPLE(2, ESP_SNTP_SERVER_LIST(CONFIG_SNTP_SRV_SERVER_DEFAULT,
                                                                                             #ifdef APP_REGION_CN
