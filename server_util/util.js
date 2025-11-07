@@ -44,6 +44,6 @@ attr=(o,a,v)=>{if(typeof(a)=='object')return Object.assign(o,a);if(v==undefined)
 		return fn;
 	};
 	_id=o=>o.id;_txt=o=>o.text;_val=o=>o;_i=(o,i)=>i;_0=o=>o[0];_1=o=>o[1];_2=o=>o[2];_3=o=>o[3];
-	ml=(tag,opt)=>j2h(({'<>':tag,'data-en':_0,'data-zh-cn':x=>(x[1]??x[0])}).merge(opt));
-	ml_div=j2h({'<>':'div',style:'text-align:right',html:['🌐',{'<>':'select',id:'_ml_sel',oninput:'sel_lang(this.value)',html:j2h({'<>':'option',value:_0,html:_1}).batch}]})([['en','English'],['zh-cn','中文']]);
+	ml=(tag,opt)=>j2h(({'<>':tag,'data-en':_0,'data-zh':x=>(x[1]??x[0])}).merge(opt));
+	ml_div=j2h({'<>':'div',style:'text-align:right',html:['🌐',{'<>':'select',id:'_ml_sel',oninput:'sel_lang(this.value)',html:j2h({'<>':'option',value:_0,html:_1}).batch}]})([['en','English'],['zh','中文']]);
 }());
