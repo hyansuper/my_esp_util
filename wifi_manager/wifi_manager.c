@@ -16,9 +16,9 @@
 #include <netdb.h>
 #include "ext_mjson.h"
 
-#ifdef APP_REGION_CN
-extern const char prov_portal_start[] asm("_binary_prov_portal_cn_html_gz_start");
-extern const char prov_portal_end[] asm("_binary_prov_portal_cn_html_gz_end");
+#ifdef PROJ_LANG_ZH
+extern const char prov_portal_start[] asm("_binary_prov_portal_zh_html_gz_start");
+extern const char prov_portal_end[] asm("_binary_prov_portal_zh_html_gz_end");
 #else
 extern const char prov_portal_start[] asm("_binary_prov_portal_en_html_gz_start");
 extern const char prov_portal_end[] asm("_binary_prov_portal_en_html_gz_end");
@@ -38,7 +38,7 @@ static char macstr[18] = "\0";
 #ifdef CONFIG_WMGR_HOSTNAME_CUSTOM
 #define HOSTNAME CONFIG_WMGR_HOSTNAME_CUSTOM_NAME
 #else
-#define HOSTNAME APP_NAME
+#define HOSTNAME PROJ_NAME
 #endif
 
 #ifdef CONFIG_WMGR_APPEND_DEVICE_ID_TO_HOSTNAME

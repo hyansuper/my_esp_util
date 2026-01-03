@@ -4,19 +4,6 @@
 #include "freertos/task.h"
 #include "freertos/timers.h"
 
-//static const char* const TAG = "sntp";
-
-/*
-menuconfig -> component -> LWIP -> SNTP -> max number of servers -> 2
-
-ntp.ntsc.ac.cn
-time.apple.com
-time.asia.apple.com
-cn.pool.ntp.org
-time.windows.com
-ntp.aliyun.com"
-*/
-
 
 // #define SNTP_SRV_ADJTIME_INTERVAL 2000
 // #define SNTP_SRV_ADJTIME_TASK_PRIO 0
@@ -71,17 +58,12 @@ esp_err_t sntp_srv_init(const char* tz, sntp_srv_minutely_update_cb_t cb) {
         tzset();
     }
 
-#if CONFIG_LWIP_SNTP_MAX_SERVERS == 1
-    esp_sntp_config_t sntp_conf = ESP_NETIF_SNTP_DEFAULT_CONFIG(CONFIG_SNTP_SRV_SERVER_DEFAULT);
-#elif CONFIG_LWIP_SNTP_MAX_SERVERS >= 2
-    esp_sntp_config_t sntp_conf = ESP_NETIF_SNTP_DEFAULT_CONFIG_MULTIPLE(2, ESP_SNTP_SERVER_LIST(CONFIG_SNTP_SRV_SERVER_DEFAULT,
-                                                                                            #ifdef APP_REGION_CN
-                                                                                                "ntp.aliyun.com"
-                                                                                            #else
-                                                                                                CONFIG_SNTP_SRV_SERVER_FALLBACK
-                                                                                            #endif
-                                                                                                ));
+#if CONFIG_LWIP_SNTP_MAX_SERVERS != 2
+#error "CONFIG_LWIP_SNTP_MAX_SERVERS must be set to 2"
 #endif
+
+esp_sntp_config_t sntp_conf = ESP_NETIF_SNTP_DEFAULT_CONFIG_MULTIPLE(2, ESP_SNTP_SERVER_LIST(SNTP_SRV_SERVER_DEFAULT,
+                                                                                                SNTP_SRV_SERVER_FALLBACK ));
     sntp_conf.sync_cb = on_sync;
     sntp_srv_minutely_update_cb = cb;
     return esp_netif_sntp_init(&sntp_conf) || sntp_srv_sync();
